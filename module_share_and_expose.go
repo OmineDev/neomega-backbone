@@ -1,7 +1,7 @@
 package neomega_backbone
 
 import (
-	"utils/sync_wrapper"
+	"github.com/OmineDev/neomega-backbone/utils/sync_wrapper"
 
 	"github.com/OmineDev/neomega-core/neomega"
 )
