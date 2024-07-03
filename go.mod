@@ -7,6 +7,8 @@ require (
 	github.com/OmineDev/qq-bot-helper v0.0.1
 )
 
+replace github.com/OmineDev/neomega-core => ../neomega-core
+
 require (
 	github.com/andybalholm/brotli v1.0.3 // indirect
 	github.com/go-gl/mathgl v1.1.0 // indirect
