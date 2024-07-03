@@ -3,7 +3,7 @@ module github.com/OmineDev/neomega-backbone
 go 1.20
 
 require (
-	github.com/OmineDev/neomega-core v0.0.1
+	github.com/OmineDev/neomega-core v0.0.3
 	github.com/OmineDev/qq-bot-helper v0.0.1
 )
 

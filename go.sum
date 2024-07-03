@@ -1,5 +1,9 @@
 github.com/OmineDev/neomega-core v0.0.1 h1:soLs+ycvazbTKaM9dECeyxyKXoI0PIxwcn2c4+RJY94=
 github.com/OmineDev/neomega-core v0.0.1/go.mod h1:TAygY9EXum3hqwb6zJIajcp8P/w9lNJnhfdPVu/G0+A=
+github.com/OmineDev/neomega-core v0.0.2 h1:qevPKKCBpSUon1wlifP+Sdy2Wy2ReJ+JjIJh5fBilXQ=
+github.com/OmineDev/neomega-core v0.0.2/go.mod h1:TAygY9EXum3hqwb6zJIajcp8P/w9lNJnhfdPVu/G0+A=
+github.com/OmineDev/neomega-core v0.0.3 h1:00vuQKu/q919HPSX/g8BF13tCd9FaGxL+/l/ny1CJqw=
+github.com/OmineDev/neomega-core v0.0.3/go.mod h1:TAygY9EXum3hqwb6zJIajcp8P/w9lNJnhfdPVu/G0+A=
 github.com/OmineDev/qq-bot-helper v0.0.1 h1:hD5/YT1alOVM+7yVHnuUgoJJipyNkpjm2PYVCOtLDXg=
 github.com/OmineDev/qq-bot-helper v0.0.1/go.mod h1:n13abCIXoiTHsKKWroFX7cvVOBiKyMgapTNhb++DgJY=
 github.com/andybalholm/brotli v1.0.3 h1:fpcw+r1N1h0Poc1F/pHbW40cUm/lMEQslZtCkBQ0UnM=
