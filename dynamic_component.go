@@ -18,10 +18,7 @@ type DynamicComponent interface {
 }
 
 type ChallengeFn func(challenge string) (response string)
-
-type DynamicComponentFactory interface {
-	Make(name string, fn ChallengeFn) DynamicComponent
-}
+type DynamicComponentFactory func(name string, fn ChallengeFn) DynamicComponent
 
 type BasicDynamicComponent struct {
 	Config DynamicComponentConfig

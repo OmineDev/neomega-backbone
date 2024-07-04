@@ -19,5 +19,3 @@ require (
 	github.com/ugorji/go/codec v1.2.12 // indirect
 	golang.org/x/image v0.0.0-20190321063152-3fc05d484e9f // indirect
 )
-
-replace github.com/OmineDev/neomega-core => ../neomega-core
