@@ -17,8 +17,10 @@ type DynamicComponent interface {
 	// Stop() error
 }
 
+type ChallengeFn func(challenge string) (response string)
+
 type DynamicComponentFactory interface {
-	Make() DynamicComponent
+	Make(name string, fn ChallengeFn) DynamicComponent
 }
 
 type BasicDynamicComponent struct {

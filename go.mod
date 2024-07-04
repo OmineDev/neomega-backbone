@@ -3,11 +3,9 @@ module github.com/OmineDev/neomega-backbone
 go 1.20
 
 require (
-	github.com/OmineDev/neomega-core v0.0.3
+	github.com/OmineDev/neomega-core v0.0.4
 	github.com/OmineDev/qq-bot-helper v0.0.1
 )
-
-replace github.com/OmineDev/neomega-core => ../neomega-core
 
 require (
 	github.com/andybalholm/brotli v1.0.3 // indirect
@@ -20,3 +18,5 @@ require (
 	github.com/ugorji/go/codec v1.2.12 // indirect
 	golang.org/x/image v0.0.0-20190321063152-3fc05d484e9f // indirect
 )
+
+replace github.com/OmineDev/neomega-core => ../neomega-core
