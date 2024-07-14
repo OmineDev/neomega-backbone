@@ -4,6 +4,7 @@ import (
 	"github.com/OmineDev/neomega-backbone/utils/sync_wrapper"
 
 	"github.com/OmineDev/neomega-core/neomega"
+	"github.com/OmineDev/neomega-core/utils/async_wrapper"
 )
 
 // FrameLevelShare aims to provide a common interface for data/api share between different components/module/loader
@@ -47,18 +48,18 @@ type BackendMenuEntry struct {
 	OnTrigCallBack func(cmds []string)
 }
 
-type TerminalInputHandler interface {
-	AsyncCallBackInGoRoutine(cb func(nextInput string))
-	BlockGet() string
-}
+// type TerminalInputHandler interface {
+// 	AsyncCallBackInGoRoutine(cb func(nextInput string))
+// 	BlockGet() string
+// }
 
 // 一个特定的模块(e.g. BackendMenu)实现这个接口，读取所有注册的接口，然后在终端显示
 type BackendIO interface {
 	// 设置终端菜单项， 用于注册
 	AddBackendMenuEntry(*BackendMenuEntry)
-	SetOnTerminalInputCallBack(func(string))
-	GetTerminalInput() TerminalInputHandler
-	ColorPrint(s string)
+	// SetOnTerminalInputCallBack(func(string))
+	GetTerminalInput() *async_wrapper.AsyncWrapper[string]
+	PrintToTerminal(s string)
 }
 
 type BackendIOModule interface {
