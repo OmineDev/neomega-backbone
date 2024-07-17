@@ -58,7 +58,7 @@ type BackendIO interface {
 	// 设置终端菜单项， 用于注册
 	AddBackendMenuEntry(*BackendMenuEntry)
 	// SetOnTerminalInputCallBack(func(string))
-	GetTerminalInput() *async_wrapper.AsyncWrapper[string]
+	GetTerminalInput() async_wrapper.AsyncResult[string]
 	PrintToTerminal(s string)
 }
 
