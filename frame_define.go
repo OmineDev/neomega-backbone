@@ -10,7 +10,7 @@ type PreInitOmega interface {
 	ConfigRead
 	StorageAndLogAccess
 	BackendIO
-	FrameLevelShare
+	FlexEnhance
 }
 
 type ExtendOmega interface {

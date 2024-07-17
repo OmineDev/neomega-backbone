@@ -1,19 +1,9 @@
 package neomega_backbone
 
 import (
-	"github.com/OmineDev/neomega-backbone/utils/sync_wrapper"
-
 	"github.com/OmineDev/neomega-core/neomega"
 	"github.com/OmineDev/neomega-core/utils/async_wrapper"
 )
-
-// FrameLevelShare aims to provide a common interface for data/api share between different components/module/loader
-type FrameLevelShare interface {
-	// both data and api share are supported
-	Share(key string, value any)
-	Get(key string) (value any, ok bool)
-	GetOmegaUserInfo() map[string]string
-}
 
 type MenuEntry struct {
 	// 触发词, 不可为空
@@ -65,8 +55,4 @@ type BackendIO interface {
 type BackendIOModule interface {
 	BackendIO
 	CanPreInit
-}
-
-type StringKVSyncMapShare interface {
-	GetSharedMap() *sync_wrapper.SyncKVEnhancedMap[string, string]
 }
