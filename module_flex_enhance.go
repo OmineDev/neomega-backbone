@@ -1,9 +1,8 @@
 package neomega_backbone
 
 import (
-	"time"
-
 	"github.com/OmineDev/neomega-core/nodes/defines"
+	"github.com/OmineDev/neomega-core/utils/async_wrapper"
 )
 
 type FlexEnhance interface {
@@ -11,25 +10,32 @@ type FlexEnhance interface {
 	defines.KVDataNode
 	defines.RolesNode
 	defines.TimeLockNode
-	FlexCmd(cmd, args string)
-	// allow blocking in onResp, if timeout<=0 then no timeout
-	FlexCmdWithCb(cmd, args string, onResp func(resp string), timeout time.Duration)
-	// could be blocking, if timeout<=0 then no timeout
-	FlexCmdWithBlockResult(cmd, args string, timeout time.Duration) string
+	// args should always be a json string
+	SoftCallOmitResult(cmd, args string)
+	// args should always be a json string
+	SoftCall(cmd, args string) async_wrapper.AsyncResult[string]
 	// e.g. if we what to add a new cmd ban <player> <reason> <time>
 	// we can register a new cmd like this:
-	// RegisterFlexCmd("ban", onCmd)
+	// RegisterSoftAPI("ban", onCmd)
 	// where onCmd is a func(args string) output string
 	// and args is a string like "<player> <reason> <time>"
-	RegisterFlexCmd(cmd string, onCmd func(args string) string)
+	// args should always be a json string
+	RegisterSoftAPI(cmd string, onCmd func(args string) (string, error))
 
 	// e.g. if we want to add a new topic "player_banned"
 	// it can be used like this:
-	// FlexPublish("player_banned", "player1")
-	// FlexPublish("player_banned","player2")
-	// bannedPlayer := FlexListen("player_banned")
+	// SoftPublish("player_banned", "player1")
+	// SoftPublish("player_banned","player2")
+	// bannedPlayer := SoftListen("player_banned")
 	// player1 := <-bannedPlayer
 	// player2 := <-bannedPlayer
-	FlexPublish(topic string, msg string)
-	FlexListen(topic string, onMsg func(string))
+	SoftPublish(topic string, msg string)
+	SoftListen(topic string, nonBlockingMsgHandleFn func(string))
+
+	SoftGet(key string) (val string, found bool)
+	SoftSet(key string, val string)
+
+	// cannot get/set in other process
+	InProcessGet(key string) (val any, found bool)
+	InProcessSet(key string, val any)
 }
