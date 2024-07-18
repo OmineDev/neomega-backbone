@@ -38,4 +38,9 @@ type FlexEnhance interface {
 	// cannot get/set in other process
 	InProcessGet(key string) (val any, found bool)
 	InProcessSet(key string, val any)
+	InProcessListen(topic string, onMsg func(any), newGoroutine bool)
+	InProcessPublish(topic string, msg any)
+	RegInProcessAPI(apiName string) async_wrapper.AsyncAPISetHandler[any, any]
+	InProcessCallAPI(apiName string, args any) async_wrapper.AsyncResult[any]
+	InProcessCallAPIOmitResponse(apiName string, args any)
 }
