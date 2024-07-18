@@ -8,7 +8,7 @@ import (
 
 type PreInitOmega interface {
 	ConfigRead
-	StorageAndLogAccess
+	StorageAndPathAccess
 	BackendIO
 	FlexEnhance
 }

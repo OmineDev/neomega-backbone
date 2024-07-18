@@ -7,7 +7,7 @@ type KVDBLike interface {
 	Iter(func(key, value string) bool)
 }
 
-type StorageAndLogAccess interface {
+type StorageAndPathAccess interface {
 	// ${log}/topic
 	GetLoggerPath(topic string) string
 	// ${data}/topic
@@ -34,8 +34,8 @@ type StorageAndLogAccess interface {
 	GetNoSeekKVDBLike(elem ...string) (KVDBLike, error)
 }
 
-type StorageAndLogProvider interface {
-	StorageAndLogAccess
+type StorageAndPathProvider interface {
+	StorageAndPathAccess
 	//
 	CanPreInit
 }

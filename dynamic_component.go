@@ -9,7 +9,7 @@ type DynamicComponentConfig interface {
 // 顺序 &Component{} -> .Init(ComponentConfig) -> Activate() -> Stop()
 // 每个 Activate 工作在一个独立的 goroutine 下
 type DynamicComponent interface {
-	Init(cfg DynamicComponentConfig, storage StorageAndLogAccess)
+	Init(cfg DynamicComponentConfig, storage StorageAndPathAccess)
 	Inject(frame ExtendOmega)
 	BeforeActivate() error
 	Activate()
@@ -25,7 +25,7 @@ type BasicDynamicComponent struct {
 	Frame  ExtendOmega
 }
 
-func (bc *BasicDynamicComponent) Init(cfg DynamicComponentConfig, storage StorageAndLogAccess) {
+func (bc *BasicDynamicComponent) Init(cfg DynamicComponentConfig, storage StorageAndPathAccess) {
 	bc.Config = cfg
 }
 
