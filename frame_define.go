@@ -6,10 +6,19 @@ import (
 	"github.com/OmineDev/neomega-core/neomega"
 )
 
-type PreInitOmega interface {
-	ConfigRead
+type StorageAndLogAccess interface {
 	StorageAndPathAccess
 	BackendIO
+}
+
+type StorageAndLogProvider interface {
+	StorageAndPathProvider
+	BackendIO
+}
+
+type PreInitOmega interface {
+	ConfigRead
+	StorageAndLogProvider
 	FlexEnhance
 }
 
