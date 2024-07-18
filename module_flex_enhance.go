@@ -19,8 +19,8 @@ type FlexEnhance interface {
 	// RegisterSoftAPI("ban", onCmd)
 	// where onCmd is a func(args string) output string
 	// and args is a string like "<player> <reason> <time>"
-	// args should always be a json string
-	RegisterSoftAPI(cmd string, onCmd func(args string) (string, error))
+	// args and ret should always be a json string
+	RegisterSoftAPI(cmd string) async_wrapper.AsyncAPISetHandler[string, string]
 
 	// e.g. if we want to add a new topic "player_banned"
 	// it can be used like this:
