@@ -1,10 +1,5 @@
 package neomega_backbone
 
-type LineDst interface {
-	Write(string)
-	FileWrite(string)
-}
-
 type KVDBLike interface {
 	Get(key string) (value string)
 	Delete(key string)
@@ -14,7 +9,7 @@ type KVDBLike interface {
 
 type StorageAndLogAccess interface {
 	// ${log}/topic
-	GetLogger(topic string) LineDst
+	GetLoggerPath(topic string) string
 	// ${data}/topic
 	GetFileData(topic string) ([]byte, error)
 	GetJsonData(topic string, data interface{}) error

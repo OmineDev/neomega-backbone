@@ -43,13 +43,48 @@ type BackendMenuEntry struct {
 // 	BlockGet() string
 // }
 
+type Printer interface {
+	Write(string)
+	Print(...interface{})
+	Printf(format string, a ...interface{})
+	Println(...interface{})
+	Printfln(format string, a ...interface{})
+}
+
+type MultiOutDst struct {
+	// print to terminal only
+	Printer
+	// print to terminal only
+	Terminal Printer
+	// print to log only
+	Log Printer
+	// print to terminal and log
+	TerminalAndLog Printer
+	// Debug (lowest level), whether it will be on terminal or log decide on frame config
+	// default will not shown in terminal or log
+	Debug Printer
+	// Info (normal level), whether it will be on terminal or log decide on frame config
+	// default will shown in terminal but not log
+	Info Printer
+	// SuccessInfo (normal level), whether it will be on terminal or log decide on frame config
+	// default will shown in terminal but not log
+	Success Printer
+	// Warning (high priority), whether it will be on terminal or log decide on frame config
+	// default will shown in both terminal and log
+	Warning Printer
+	// Error (high priority), whether it will be on terminal or log decide on frame config
+	// default will shown in both terminal and log
+	Error Printer
+}
+
 // 一个特定的模块(e.g. BackendMenu)实现这个接口，读取所有注册的接口，然后在终端显示
 type BackendIO interface {
 	// 设置终端菜单项， 用于注册
 	AddBackendMenuEntry(*BackendMenuEntry)
 	// SetOnTerminalInputCallBack(func(string))
 	GetTerminalInput() async_wrapper.AsyncResult[string]
-	PrintToTerminal(s string)
+	Out() *MultiOutDst
+	ForkOut(prefix string, logFile string) *MultiOutDst
 }
 
 type BackendIOModule interface {

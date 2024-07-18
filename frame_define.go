@@ -19,7 +19,6 @@ type ExtendOmega interface {
 	neomega.MicroOmega
 	CQHTTPAccess
 	FlexEnhance
-	Logger() LineDst
 }
 
 type OmegaFrame interface {
