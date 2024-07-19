@@ -31,7 +31,7 @@ type StorageAndPathAccess interface {
 	// on system like android, we can not use "seek" or some specific file operation under download or dirs in public dir,
 	// which makes it impossible to use a normal database
 	// FileLogKVDBLike is a KVDBLike, which aims to work in a file-system where "seek" is not supported
-	GetNoSeekKVDBLike(elem ...string) (KVDBLike, error)
+	GetKVDBLike(saveDir string, dbType string) (KVDBLike, error)
 }
 
 type StorageAndPathProvider interface {
