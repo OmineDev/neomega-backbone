@@ -36,8 +36,16 @@ type FlexEnhance interface {
 	SoftSet(key string, val string)
 
 	// cannot get/set in other process
-	InProcessGet(key string) (val any, found bool)
-	InProcessSet(key string, val any)
+	InProcessGet(key any) (val any, found bool)
+	InProcessSet(key any, val any)
+	InProcessCompareAndDelete(key any, old any) (deleted bool)
+	InProcessCompareAndSwap(key any, old any, new any) bool
+	InProcessDelete(key any)
+	InProcessLoadAndDelete(key any) (value any, loaded bool)
+	InProcessLoadOrStore(key any, value any) (actual any, loaded bool)
+	InProcessRange(f func(key any, value any) bool)
+	InProcessSwap(key any, value any) (previous any, loaded bool)
+
 	InProcessListen(topic string, onMsg func(any), newGoroutine bool)
 	InProcessPublish(topic string, msg any)
 	RegInProcessAPI(apiName string) async_wrapper.AsyncAPISetHandler[any, any]
