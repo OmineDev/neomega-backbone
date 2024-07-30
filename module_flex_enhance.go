@@ -16,11 +16,11 @@ type FlexEnhance interface {
 	SoftCall(cmd, args string) async_wrapper.AsyncResult[string]
 	// e.g. if we what to add a new cmd ban <player> <reason> <time>
 	// we can register a new cmd like this:
-	// RegisterSoftAPI("ban", onCmd)
+	// RegSoftAPI("ban", onCmd)
 	// where onCmd is a func(args string) output string
 	// and args is a string like "<player> <reason> <time>"
 	// args and ret should always be a json string
-	RegisterSoftAPI(cmd string) async_wrapper.AsyncAPISetHandler[string, string]
+	RegSoftAPI(cmd string) async_wrapper.AsyncAPISetHandler[string, string]
 
 	// e.g. if we want to add a new topic "player_banned"
 	// it can be used like this:
