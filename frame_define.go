@@ -4,6 +4,7 @@ import (
 	"context"
 
 	"github.com/OmineDev/neomega-core/neomega"
+	"github.com/OmineDev/neomega-core/utils/pressure_metric"
 )
 
 type StorageAndLogAccess interface {
@@ -27,7 +28,20 @@ type ExtendOmega interface {
 	GameMenuSetter
 	neomega.MicroOmega
 	CQHTTPAccess
-	FlexEnhance
+}
+
+type ExtendOmegaCmdBox struct {
+	neomega.MicroOmegaCmdBox
+	PreInitOmega
+	GameMenuSetter
+	CQHTTPAccess
+}
+
+func NewExtendOmegaCmdBox(o ExtendOmega, m *pressure_metric.FreqMetric) ExtendOmega {
+	return &ExtendOmegaCmdBox{
+		neomega.NewMicroOmegaCmdBox(o, m),
+		o, o, o,
+	}
 }
 
 type OmegaFrame interface {
